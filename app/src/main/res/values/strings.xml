@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string-array name="unitName">
+        <item>Currency</item>
+        <item>Length</item>
+        <item>Temperature</item>
+        <item>Weight</item>
+        <item>Time</item>
+    </string-array>
+
+</resources>
