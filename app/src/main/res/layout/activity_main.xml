@@ -31,27 +31,27 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/upperText"/>
-
-    <TextView
-        android:id="@+id/broadUnit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner"
-        android:background="#FF7300"
-        android:gravity="center"
-        android:padding="40dp"
-        android:text="Currency"
-        android:textColor="@color/white"
-        android:textSize="45sp" />
+        android:layout_below="@+id/upperText" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/broadUnit"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/spinner"-->
+<!--        android:background="#FF7300"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="40dp"-->
+<!--        android:text="Currency"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="45sp" />-->
 
     <EditText
         android:id="@+id/unit1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/broadUnit"
+        android:layout_below="@+id/spinner"
         android:hint="0"
         android:textSize="60dp"
         android:background="#FF7300"
