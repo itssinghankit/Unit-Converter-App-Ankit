@@ -12,10 +12,38 @@
         <item>Time</item>
     </string-array>
 
-<string-array name="length">
-    <item>mm</item>
-    <item>cm</item>
-    <item>m</item>
-    <item>km</item>
-</string-array>
+    <string-array name="length">
+        <item>km</item>
+        <item>m</item>
+        <item>cm</item>
+        <item>mm</item>
+    </string-array>
+
+    <string-array name="time">
+        <item>day</item>
+        <item>hour</item>
+        <item>min</item>
+        <item>sec</item>
+    </string-array>
+
+    <string-array name="currency">
+        <item>INR</item>
+        <item>USD</item>
+        <item>EUR</item>
+        <item>JPY</item>
+    </string-array>
+
+    <string-array name="weight">
+        <item>kg</item>
+        <item>lb</item>
+        <item>g</item>
+        <item>mg</item>
+    </string-array>
+
+    <string-array name="temp">
+        <item>°C</item>
+        <item>°F</item>
+        <item>K</item>
+    </string-array>
+
 </resources>
