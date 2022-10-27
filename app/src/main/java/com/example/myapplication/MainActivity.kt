@@ -10,16 +10,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        val spinner: Spinner = findViewById(R.id.spinner)
+        val spinner1: Spinner = findViewById(R.id.spinner)
 
         ArrayAdapter.createFromResource(
             this, R.array.unitName,R.layout.spinner_layout
         ).also { adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
-             spinner.adapter = adapter
+             spinner1.adapter = adapter
+        }
+
+        val spinner2:Spinner=findViewById(R.id.spinner2)
+
+        ArrayAdapter.createFromResource(this,R.array.length,R.layout.spinner_layout).also{
+            adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
+            spinner2.adapter=adapter
         }
 
 
+        val spinner3:Spinner=findViewById(R.id.spinner3)
+
+        ArrayAdapter.createFromResource(this,R.array.length,R.layout.spinner_layout2).also{
+            adapter->adapter.setDropDownViewResource(R.layout.spinner_layout_dd2)
+            spinner3.adapter=adapter
+        }
 
 
     }

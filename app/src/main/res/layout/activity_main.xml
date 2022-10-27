@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,79 +11,141 @@
         android:id="@+id/upperText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FF7300"
+        android:background="@color/orange"
         android:padding="16dp"
-        android:text="Unit converter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/unit_converter"
         android:textColor="@color/white"
-        android:textSize="20dp" />
-
+        android:textSize="20sp" />
 
     <ImageView
+        android:contentDescription="@string/logo"
         android:id="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="66dp"
         android:layout_height="61dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
         android:layout_marginTop="-2dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:padding="0dp"
         android:src="@drawable/logo" />
 
-    <Spinner
-        android:id="@+id/spinner"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/upperText" />
+        android:background="@color/orange"
+        android:layout_below="@+id/upperText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/upperText"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
-<!--    <TextView-->
-<!--        android:id="@+id/broadUnit"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/spinner"-->
-<!--        android:background="#FF7300"-->
-<!--        android:gravity="center"-->
-<!--        android:padding="40dp"-->
-<!--        android:text="Currency"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="45sp" />-->
+        <Spinner
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/sp"
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:backgroundTint="@color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/spinner2container"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/unit1"
+        android:paddingTop="50dp"
+        android:background="@color/orange">
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/white"
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
+        android:inputType="numberDecimal"
         android:id="@+id/unit1"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner"
-        android:hint="0"
-        android:textSize="60dp"
-        android:background="#FF7300"
-        android:textColor="@color/white"
+        android:background="@color/orange"
         android:gravity="center"
-        android:paddingBottom="80dp"/>
+        android:hint="@string/hint"
+        android:maxLines="1"
+        android:paddingTop="40dp"
+        android:paddingBottom="80dp"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/spinner2container"
+        app:layout_constraintTop_toBottomOf="@id/sp" />
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/spinner3container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/unit1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/button"
+    android:layout_marginBottom="20dp">
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/orange"
+
+       />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/unit2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/unit1"
-        android:layout_above="@+id/button"
         android:gravity="center"
-        android:hint="0"
+        android:hint="@string/hint"
         android:textColorHint="#8D8888"
-        android:textColor="#FF7300"
-        android:textSize="60dp" />
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/unit1"
+        app:layout_constraintEnd_toStartOf="@id/spinner3container"/>
 
     <Button
         android:id="@+id/button"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-       android:layout_margin="30dp"
-        android:backgroundTint="#FF7300"
+        android:layout_margin="30dp"
+        android:backgroundTint="@color/orange"
         android:gravity="center"
-        android:text="convert"
+        android:text="@string/convert"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
