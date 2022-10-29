@@ -13,10 +13,9 @@
         android:layout_height="wrap_content"
         android:background="@color/orange"
         android:padding="16dp"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/actionbar"
         android:text="@string/unit_converter"
         android:textColor="@color/white"
         android:textSize="20sp" />
@@ -25,7 +24,7 @@
         android:contentDescription="@string/logo"
         android:id="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/actionbar"
         android:layout_width="66dp"
         android:layout_height="61dp"
         android:layout_alignParentTop="true"
@@ -66,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@id/sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/unit1"
-        android:paddingTop="50dp"
+        android:paddingTop="37dp"
         android:paddingLeft="10dp"
         android:background="@color/orange">
 
@@ -91,10 +90,10 @@
         android:hint="@string/hint"
         android:maxLines="1"
         android:paddingTop="40dp"
-        android:paddingBottom="80dp"
-        android:paddingLeft="10dp"
+        android:paddingBottom="100dp"
+        android:paddingStart="10dp"
         android:textColor="@color/white"
-        android:textSize="60sp"
+        android:textSize="40sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/spinner2container"
         app:layout_constraintTop_toBottomOf="@id/sp" />
@@ -106,7 +105,6 @@
     app:layout_constraintTop_toBottomOf="@id/unit1"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintBottom_toTopOf="@id/button"
-    android:layout_marginBottom="20dp"
     android:paddingLeft="10dp">
 
     <Spinner
@@ -115,28 +113,26 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="@color/orange"
-
-       />
+        android:backgroundTint="@color/orange" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/unit2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/unit1"
         android:gravity="center"
         android:hint="@string/hint"
-        android:textColorHint="#8D8888"
-        android:textColor="@color/black"
         android:maxLines="1"
-        android:textSize="60sp"
+        android:paddingStart="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="#8D8888"
+        android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/spinner3container"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/unit1"
-        app:layout_constraintEnd_toStartOf="@id/spinner3container"
-        android:paddingLeft="10dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/unit1" />
 
     <Button
         android:id="@+id/button"
@@ -154,5 +150,21 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
+    <ImageView
+        android:contentDescription="@string/interchange_botton"
+        android:id="@+id/interchang"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/interchange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/unit1"
+        android:layout_marginTop="-30dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/interchangeborder" />
+
+    <include layout="@layout/actionbar"
+        android:id="@+id/actionbar"
+        app:layout_constraintBottom_toTopOf="@id/upperText"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

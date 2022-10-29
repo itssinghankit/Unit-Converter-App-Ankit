@@ -4,6 +4,7 @@
     <string name="unit_converter">Unit converter</string>
     <string name="convert">convert</string>
     <string name="logo">logo</string>
+    <string name="interchange_botton">interchange botton</string>
     <string-array name="unitName">
         <item>Currency</item>
         <item>Length</item>

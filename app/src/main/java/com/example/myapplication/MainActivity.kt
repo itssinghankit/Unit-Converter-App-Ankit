@@ -2,7 +2,6 @@ package com.example.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -10,22 +9,22 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
-import kotlin.math.roundToInt
-import kotlin.reflect.typeOf
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var number:Double             //operations is done on it
+        var number:Double           //operations is done on it
         val button=findViewById<Button>(R.id.button)
-        var from:Double=0.0
-        var to:Double=0.0
+        var from=0.0
+        var to=0.0
+        var input:EditText=findViewById(R.id.unit1)
         val output=findViewById<TextView>(R.id.unit2)
-        var spinner1unit:String="Currency"   //because in starting no value is selected also null logic exists
-        var spinner2unit:String="INR"
-        var spinner3unit:String="INR"
+        var spinner1unit="Currency"   //because in starting no value is selected also null logic exists
+        var spinner2unit="INR"
+        var spinner3unit="INR"
 
 //it join array adapter to spinner1 in starting
         val spinner1: Spinner = findViewById(R.id.spinner)
@@ -37,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 //it join array adapter to spinner2
-        val spinner2:Spinner=findViewById(R.id.spinner2)
+        var spinner2:Spinner=findViewById(R.id.spinner2)
 
         ArrayAdapter.createFromResource(this,R.array.currency,R.layout.spinner_layout).also{
             adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 //it join array adapter to spinner3
-        val spinner3:Spinner=findViewById(R.id.spinner3)
+        var spinner3:Spinner=findViewById(R.id.spinner3)
 
         ArrayAdapter.createFromResource(this,R.array.currency,R.layout.spinner_layout2).also{
             adapter->adapter.setDropDownViewResource(R.layout.spinner_layout_dd2)
@@ -56,92 +55,87 @@ class MainActivity : AppCompatActivity() {
 //it runs when item selected in spinner1 and after selection required units will be displayed in spinner2 and spinner3
 
         spinner1.onItemSelectedListener= object : AdapterView.OnItemSelectedListener {
+
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 spinner1unit= p0?.getItemAtPosition(p2).toString()
+                output.text=input.text     //output and input get equal as both units are same
 
-                if(spinner1unit=="Currency"){
-                    val spinner2:Spinner=findViewById(R.id.spinner2)
+                spinner2=findViewById(R.id.spinner2)
+                spinner3=findViewById(R.id.spinner3)
 
-                    ArrayAdapter.createFromResource(this@MainActivity,R.array.currency,R.layout.spinner_layout).also{
-                            adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
-                        spinner2.adapter=adapter
+                when (spinner1unit) {
+                    "Currency" -> {
+                        spinner2=findViewById(R.id.spinner2)
+
+                        ArrayAdapter.createFromResource(this@MainActivity,R.array.currency,R.layout.spinner_layout).also{ adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
+                            spinner2.adapter=adapter
+                        }
+
+
+                        spinner3=findViewById(R.id.spinner3)
+
+                        ArrayAdapter.createFromResource(this@MainActivity,R.array.currency,R.layout.spinner_layout2).also{ adapter->adapter.setDropDownViewResource(R.layout.spinner_layout_dd2)
+                            spinner3.adapter=adapter
+                        }
                     }
+                    "Temperature" -> {
+                        spinner2=findViewById(R.id.spinner2)
+
+                        ArrayAdapter.createFromResource(this@MainActivity,R.array.temp,R.layout.spinner_layout).also{ adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
+                            spinner2.adapter=adapter
+                        }
 
 
-                    val spinner3:Spinner=findViewById(R.id.spinner3)
+                        spinner3=findViewById(R.id.spinner3)
 
-                    ArrayAdapter.createFromResource(this@MainActivity,R.array.currency,R.layout.spinner_layout2).also{
-                            adapter->adapter.setDropDownViewResource(R.layout.spinner_layout_dd2)
-                        spinner3.adapter=adapter
+                        ArrayAdapter.createFromResource(this@MainActivity,R.array.temp,R.layout.spinner_layout2).also{ adapter->adapter.setDropDownViewResource(R.layout.spinner_layout_dd2)
+                            spinner3.adapter=adapter
+                        }
                     }
-                }
+                    "Length" -> {
+                        spinner2=findViewById(R.id.spinner2)
 
-                if(spinner1unit=="Temperature"){
-                    val spinner2:Spinner=findViewById(R.id.spinner2)
+                        ArrayAdapter.createFromResource(this@MainActivity,R.array.length,R.layout.spinner_layout).also{ adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
+                            spinner2.adapter=adapter
+                        }
 
-                    ArrayAdapter.createFromResource(this@MainActivity,R.array.temp,R.layout.spinner_layout).also{
-                            adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
-                        spinner2.adapter=adapter
+
+                        spinner3=findViewById(R.id.spinner3)
+
+                        ArrayAdapter.createFromResource(this@MainActivity,R.array.length,R.layout.spinner_layout2).also{ adapter->adapter.setDropDownViewResource(R.layout.spinner_layout_dd2)
+                            spinner3.adapter=adapter
+                        }
                     }
+                    "Weight" -> {
+                        spinner2=findViewById(R.id.spinner2)
+
+                        ArrayAdapter.createFromResource(this@MainActivity,R.array.weight,R.layout.spinner_layout).also{ adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
+                            spinner2.adapter=adapter
+                        }
 
 
-                    val spinner3:Spinner=findViewById(R.id.spinner3)
+                        spinner3=findViewById(R.id.spinner3)
 
-                    ArrayAdapter.createFromResource(this@MainActivity,R.array.temp,R.layout.spinner_layout2).also{
-                            adapter->adapter.setDropDownViewResource(R.layout.spinner_layout_dd2)
-                        spinner3.adapter=adapter
+                        ArrayAdapter.createFromResource(this@MainActivity,R.array.weight,R.layout.spinner_layout2).also{ adapter->adapter.setDropDownViewResource(R.layout.spinner_layout_dd2)
+                            spinner3.adapter=adapter
+                        }
                     }
-                }
+                    "Time" -> {
+                        spinner2=findViewById(R.id.spinner2)
 
-                else if(spinner1unit=="Length"){
-                    val spinner2:Spinner=findViewById(R.id.spinner2)
-
-                    ArrayAdapter.createFromResource(this@MainActivity,R.array.length,R.layout.spinner_layout).also{
-                            adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
-                        spinner2.adapter=adapter
-                    }
+                        ArrayAdapter.createFromResource(this@MainActivity,R.array.time,R.layout.spinner_layout).also{ adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
+                            spinner2.adapter=adapter
+                        }
 
 
-                    val spinner3:Spinner=findViewById(R.id.spinner3)
+                        spinner3=findViewById(R.id.spinner3)
 
-                    ArrayAdapter.createFromResource(this@MainActivity,R.array.length,R.layout.spinner_layout2).also{
-                            adapter->adapter.setDropDownViewResource(R.layout.spinner_layout_dd2)
-                        spinner3.adapter=adapter
-                    }
-                }
-                else if(spinner1unit=="Weight"){
-                    val spinner2:Spinner=findViewById(R.id.spinner2)
-
-                    ArrayAdapter.createFromResource(this@MainActivity,R.array.weight,R.layout.spinner_layout).also{
-                            adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
-                        spinner2.adapter=adapter
-                    }
-
-
-                    val spinner3:Spinner=findViewById(R.id.spinner3)
-
-                    ArrayAdapter.createFromResource(this@MainActivity,R.array.weight,R.layout.spinner_layout2).also{
-                            adapter->adapter.setDropDownViewResource(R.layout.spinner_layout_dd2)
-                        spinner3.adapter=adapter
-                    }
-                }
-                else if(spinner1unit=="Time"){
-                    val spinner2:Spinner=findViewById(R.id.spinner2)
-
-                    ArrayAdapter.createFromResource(this@MainActivity,R.array.time,R.layout.spinner_layout).also{
-                            adapter -> adapter.setDropDownViewResource(R.layout.spinner_layout_dd)
-                        spinner2.adapter=adapter
-                    }
-
-
-                    val spinner3:Spinner=findViewById(R.id.spinner3)
-
-                    ArrayAdapter.createFromResource(this@MainActivity,R.array.time,R.layout.spinner_layout2).also{
-                            adapter->adapter.setDropDownViewResource(R.layout.spinner_layout_dd2)
-                        spinner3.adapter=adapter
+                        ArrayAdapter.createFromResource(this@MainActivity,R.array.time,R.layout.spinner_layout2).also{ adapter->adapter.setDropDownViewResource(R.layout.spinner_layout_dd2)
+                            spinner3.adapter=adapter
+                        }
                     }
                 }
-                                  /**************************************************/
+
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -149,6 +143,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+                                    /******* After selection of units **********/
 
         spinner2.onItemSelectedListener=object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -172,9 +167,11 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+                         /*********** When button is clicked*********/
+        button.setOnClickListener{
 
-        button.setOnClickListener(){
-            val input:EditText=findViewById(R.id.unit1)
+            input=findViewById(R.id.unit1)
+
             when(spinner1unit){
                 "Weight"->{
                     when(spinner2unit){
@@ -190,19 +187,6 @@ class MainActivity : AppCompatActivity() {
                         "mg"->to=1000000.0
                     }
                 }
-                "Temperature"->{
-                    when(spinner2unit){
-                        "°C"->from=1.0
-                        "°F"->from=33.8
-                        "K"->from=273.15
-                    }
-                    when(spinner3unit){
-                        "°C"->to=1.0
-                        "°F"->to=33.8
-                        "K"->to=273.15
-                    }
-                }
-
                 "Currency"->{
                     when(spinner2unit){
                         "INR"->from=82.45
@@ -235,28 +219,59 @@ class MainActivity : AppCompatActivity() {
                     when(spinner2unit){
                         "day"->from=1.0
                         "hour"->from=24.0
-                        "min"->from=1000.0
-                        "sec"->from=1000000.0
+                        "min"->from=1440.0
+                        "sec"->from=86400.0
                     }
                     when(spinner3unit){
                         "day"->to=1.0
                         "hour"->to=24.0
-                        "min"->to=1000.0
-                        "sec"->to=1000000.0
+                        "min"->to=1440.0
+                        "sec"->to=86400.0
                     }
                 }
             }
 
-//
-            number= input.text.toString().toDouble()     //type of input.text is editabletext
+            if (spinner1unit=="Temperature"){
+                number=input.text.toString().toDouble()
+                if(spinner2unit=="°C" && spinner3unit=="K")
+                {
+                    number=(number+273.15)
+
+                }
+                else if(spinner2unit=="K" && spinner3unit=="°C")
+                {
+                    number=(number-273.15)
+                }
+                else if(spinner2unit=="°C" && spinner3unit=="°F")
+                {
+                    number=((number*9)/5+32)
+                }
+                else if(spinner2unit=="°F" && spinner3unit=="°C")
+                {
+                    number=((number-32)*5/9)
+                }
+                else if(spinner2unit=="°F" && spinner3unit=="K")
+                {
+                    number=((number+459.67)/1.8)
+                }
+                else if(spinner2unit=="K" && spinner3unit=="°F")
+                {
+                    number=((number*1.8)-459.67)
+                }
+
+                number=String.format("%.6f",number).toDouble()
+                output.text=number.toString()
+
+
+            }
+            else{
+
+            number= input.text.toString().toDouble() //type of input.text is editable text
             number=(number*to)/from
-            output.text=number.toString()
+                number=String.format("%.6f",number).toDouble()  //to show precision value till n places and it will round of value
+            output.text=number.toString()}
         }
 
-
-
-
-/*******************************/
 
     }
 }
