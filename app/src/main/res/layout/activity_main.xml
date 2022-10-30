@@ -75,9 +75,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/white" />
 
-            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
